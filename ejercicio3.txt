@@ -1,0 +1,42 @@
+using System;
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        int dia, mes, año;
+
+        Console.Write("Ingrese el día de su cumpleaños: ");
+        if (!int.TryParse(Console.ReadLine(), out dia) || dia < 1 || dia > 31)
+        {
+            Console.WriteLine("Día ingresado no válido.");
+            return;
+        }
+
+        Console.Write("Ingrese el mes de su cumpleaños: ");
+        if (!int.TryParse(Console.ReadLine(), out mes) || mes < 1 || mes > 12)
+        {
+            Console.WriteLine("Mes ingresado no válido.");
+            return;
+        }
+
+        Console.Write("Ingrese el año presente de su cumpleaños: ");
+        if (!int.TryParse(Console.ReadLine(), out año) || año < DateTime.MinValue.Year || año > DateTime.MaxValue.Year)
+        {
+            Console.WriteLine("Año ingresado no válido.");
+            return;
+        }
+
+        DateTime fechaCumpleaños = new DateTime(año, mes, dia);
+        DateTime fechaActual = DateTime.Today;
+
+        if (fechaCumpleaños < fechaActual)
+        {
+            fechaCumpleaños = fechaCumpleaños.AddYears(1); 
+        }
+
+        int diasRestantes = (fechaCumpleaños - fechaActual).Days;
+
+        Console.WriteLine($"Días restantes para su próximo cumpleaños: {diasRestantes} días");
+    }
+}

@@ -1,0 +1,35 @@
+using System;
+
+class demo
+{
+    static void Main(string[] args)
+    {
+        double Prestamo = 3000;
+		string Moneda= "USD";
+		string nombre ;
+        int plazoMeses = 6;
+        DateTime FechaInicial = DateTime.Today;
+        double Cuotal = Prestamo / plazoMeses;
+
+		Console.WriteLine("Ingrese su nombre: ");
+		nombre = Console.ReadLine();
+
+		Console.WriteLine("\n-------------------------------------------");
+        Console.WriteLine("Detalle del prestamo: ");
+		Console.WriteLine("-------------------------------------------");
+		Console.WriteLine($"   Nombre:                          {nombre}");
+        Console.WriteLine($"   Total monto del prestamo:        ${Prestamo}");
+        Console.WriteLine($"   Plazo del prestamo:              {plazoMeses} meses");
+        Console.WriteLine($"   Cuota mensual:                   ${Cuotal}");
+		Console.WriteLine($"   Moneda:                          {Moneda}");
+		Console.WriteLine("\n-------------------------------------------");
+        Console.WriteLine("Futuras fechas de a pagar:");
+		Console.WriteLine("-------------------------------------------");
+        for (int i = 0; i < plazoMeses; i++)
+        {
+            DateTime fechaPago = FechaInicial.AddMonths(i);
+            string fechaFormateada = fechaPago.ToString("dd/MM/yyyy");
+            Console.WriteLine($"   Cuota {i + 1}: {fechaFormateada} - ${Cuotal}");
+        }
+    }
+}
