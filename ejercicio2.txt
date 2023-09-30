@@ -4,7 +4,7 @@ class demo
 {
     static void Main(string[] args)
     {
-        double Prestamo = 3000;
+        double Prestamo = 5000;
 		string Moneda= "USD";
 		string nombre ;
         int plazoMeses = 6;
